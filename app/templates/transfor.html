@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Paytm merchant payment page</title>
+</head>
+<body>
+<h1>Redirecting you to the merchant....</h1>
+<h1>Please do not refresh your page....</h1>
+<form action="https://securegw.paytm.in/order/process" method="post" name="paytm">
+{#
+        <input type="hidden" name="MID" value="zbQVHo39210285057133">
+        <input type="hidden" name="ORDER_ID" value="10">
+        <input type="hidden" name="TXN_AMOUNT" value="200">
+        <input type="hidden" name="CUST_ID" value="lalala">
+        <input type="hidden" name="INDUSTRY_TYPE_ID" value="Retail">
+    <input type="hidden" name="WEBSITE" value="WEBSTAGING">
+    <input type="hidden" name="CHANNEL_ID" value="WEB">
+     <input type="hidden" name="CHANNEL_ID" value="/">#}
+
+
+  {% for key , value in param.items() %}
+    <input type="hidden" name="{{key}}" value="{{value}}">
+  {% endfor %}
+
+
+</form>
+
+<script>
+document.paytm.submit()
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+
+html, body {
+    margin: 0;
+    height: 100% !important;
+    /*background-color: #537895;
+    background-image: linear-gradient(315deg, #537895 0%, #09203f 74%);*/
+    font-family: "Roboto", sans-serif !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+}
+
+.loginPage {
+    background-color: #abe9cd;
+    background-image: linear-gradient(315deg, #abe9cd 0%, #3eadcf 74%);
+
+    position: absolute;
+    top: 35.5%;
+    left: 50%;
+    border-radius: 25px;
+
+    width: 285px;
+    margin: -140px 0 0 -182px;
+    padding: 40px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    padding-bottom: 3px;
+}
+
+.loginPage h2 {
+    margin: 0 0 20px;
+    line-height: 1;
+    color: $ AlexsBlue;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.loginPage input {
+    outline: none;
+    display: block;
+    width: 100%;
+    margin: 10px 0 5px;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    color: #ccc;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", "sans-serif";
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-transition: 0.2s linear;
+    -moz-transition: 0.2s linear;
+    -ms-transition: 0.2s linear;
+    -o-transition: 0.2s linear;
+    transition: 0.2s linear;
+}
+
+.loginPage input {
+    color: #333;
+}
+
+.loginPage input:focus {
+    color: #333;
+    border: 1px solid $ AlexsBlue;
+}
+
+.loginPage button {
+    cursor: pointer;
+    background: $ AlexsBlue;
+    width: 100%;
+    padding: 10px 15px;
+    border: 0;
+    color: #fff;
+    font-family: "Roboto";
+    font-size: 14px;
+    font-weight: 400;
+
+}
+
+.loginPage button:hover {
+    background: #369cb8;
+}
+
+.button {
+    border-radius: 4px;
+    background-color: $ AlexsBlue;
+    border: none;
+    color: #fff;
+    text-align: center;
+    font-size: 15px;
+    padding: 5px;
+    width: 100px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.button span:after {
+    content: '»';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.button:hover span {
+    padding-right: 25px;
+}
+
+.button:hover span:after {
+    opacity: 1;
+    right: 0;
+}

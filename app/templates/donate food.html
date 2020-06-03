@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- <link rel="icon" href="img/favicon.png" type="image/png"> -->
+<link rel="icon" type="image/png" sizes="192x192" href="favicon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+<title>Annapurna</title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.css') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='vendors/linericon/style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/font-awesome.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='vendors/owl-carousel/owl.carousel.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='vendors/lightbox/simpleLightbox.css') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='vendors/nice-select/css/nice-select.css') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='vendors/animate-css/animate.css') }}">
+<!-- <link rel="stylesheet" href="{{ url_for('static',filename='css/login.css')}}"> -->
+<!-- main css -->
+<link rel="manifest" href="{{ url_for('static',filename='/manifest.json') }}">
+
+<link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/responsive.css') }}">
+
+</head>
+<body>
+
+
+<!--================Header Menu Area =================-->
+<header class="header_area">
+
+    <div class="main_menu">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <a class="navbar-brand logo_h" href="{{ url_for('home') }}"><img
+                        src="{{ url_for('static',filename='img/annapurna.png') }}" width="100" alt=""></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav menu_nav ml-auto">
+                        <li class="nav-item active"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">About</a></li>
+                        <li class="nav-item submenu dropdown">
+                            <a href="{{ url_for('donate') }}" class="nav-link dropdown-toggle" data-toggle="dropdown"
+                               role="button" aria-haspopup="true" aria-expanded="false">Donate</a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item"><a class="nav-link" href="{{ url_for('donate_food') }}">Donate
+                                    Food</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ url_for('donate_fund') }}">Donate
+                                    Money</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('join_us') }}">Join us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('contactus') }}">Contact</a></li>
+                        {% if current_user.is_authenticated %}
+                            <li class="nav-item"><a class="nav-link" href="{{ url_for('logout') }}">Logout</a></li>
+                             <li class="nav-item"><a class="nav-link" href="{{ url_for('account') }}">Account</a></li>
+                        {% else %}
+                            <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}">Login</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url_for('register') }}">Register</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<!--================Header Menu Area =================-->
+
+<!--================Home Banner Area =================-->
+<section class="banner_area">
+    <div class="banner_inner d-flex align-items-center">
+        <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0"
+             data-background=""></div>
+        <div class="container">
+            <div class="banner_content text-center">
+                <h2>Donate Food</h2>
+                <div class="page_link">
+                    <a href="index.html">Home</a>
+                    <a href="donate food.html">Donate Food</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Home Banner Area =================-->
+
+<section class="donation_f_area p_120">
+    <div class="container">
+        <div class="welcome_text">
+            <p>All of us here at Annapurna really appreciate your concern and effort to feed the hungry!</p>
+        </div>
+        <div class="row welcome_inner">
+            <div class="col-lg-6 ">
+                <div class="dn_form_area">
+                    <form class="donation_form row" method="post" action="">
+                        <div class="form-group col-lg-12">
+                            <label>Quantity of eatables</label>
+                            {{ form.food_quantity(class="form-control", placeholder="Quantity") }}
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <label>Quantity of liquid</label>
+                            {{ form.liquid(class="form-control", placeholder="Quantity") }}
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <label> Is the food packed? </label>
+                            <select class="donate_select">
+                                <option value="1">Yes</option>
+                                <option value="2">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <label>Pickup address</label>
+                            {{ form.address(class="form-control" ,placeholder="Address") }}
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <label>Additional message you wish to provide</label>
+                            <textarea class="form-control" name="message" id="message" rows="1"
+                                      placeholder="Message"></textarea>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <button {{ form.submit(type="submit", value="submit", class="btn submit_btn form-control") }}>Donate Now</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="welcome_img">
+                    <img class="img-fluid" src="{{ url_for('static',filename='img/saree.jpg') }}" alt="">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+
+<!--================ start footer Area  =================-->
+  <footer class="footer-area section_gap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3  col-md-6 col-sm-6">
+                <div class="welcome_img">
+                    <img class="img-fluid" src="{{ url_for('static',filename='img/annapurna.png') }}" alt="img">
+                </div>
+            </div>
+            <div class="col-lg-3  col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <h6 class="footer_title">About Annapurna</h6>
+                    <p>We aim to optimise the efforts of NGOs and philanthropist individuals by giving them a platform
+                        to manage their communication and donations. </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <h6 class="footer_title">Navigation Links</h6>
+                    <div class="row">
+                        <div class="col-4">
+                            <ul class="list">
+                                <li><a href="{{ url_for('home') }}">Home</a></li>
+                                <li><a href="{{ url_for('about') }}">About</a></li>
+                                <li><a href="{{ url_for('donate') }}">Donate</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-4">
+                            <ul class="list">
+                                <li><a href="{{ url_for('join_us') }}">Join us</a></li>
+                                <li><a href="{{ url_for('contactus') }}">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3  col-md-6 col-sm-6">
+                <div class="welcome_img">
+                    <img class="img-fluid" src="{{ url_for('static',filename='img/welcome-img.jpg') }}" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="border_line"></div>
+        <div class="row footer-bottom d-flex justify-content-between align-items-center">
+
+        </div>
+    </div>
+</footer>
+<!--================ End footer Area  =================-->
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src={{ url_for('static',filename="js/jquery-3.2.1.min.js") }}></script>
+<script src={{ url_for('static',filename="js/popper.js") }}></script>
+<script src={{ url_for('static',filename="js/bootstrap.min.js") }}></script>
+<script src={{ url_for('static',filename="js/stellar.js") }}></script>
+<script src={{ url_for('static',filename="vendors/lightbox/simpleLightbox.min.js") }}></script>
+<script src={{ url_for('static',filename="vendors/nice-select/js/jquery.nice-select.min.js") }}></script>
+<script src={{ url_for('static',filename="vendors/isotope/imagesloaded.pkgd.min.js") }}></script>
+<script src={{ url_for('static',filename="vendors/isotope/isotope-min.js") }}></script>
+<script src={{ url_for('static',filename="vendors/owl-carousel/owl.carousel.min.js") }}></script>
+<script src={{ url_for('static',filename="js/jquery.ajaxchimp.min.js") }}></script>
+<script src={{ url_for('static',filename="js/mail-script.js") }}></script>
+<!-- contact js -->
+<script src={{ url_for('static',filename="js/jquery.form.js") }}></script>
+<script src={{ url_for('static',filename="js/jquery.validate.min.js") }}></script>
+<script src={{ url_for('static',filename="js/contact.js") }}></script>
+<!--gmaps Js-->
+<script src={{ url_for('static',filename="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE") }}></script>
+<script src={{ url_for('static',filename="js/gmaps.min.js") }}></script>
+<script src={{ url_for('static',filename="js/theme.js") }}></script>
+</body>
+</html>
