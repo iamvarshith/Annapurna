@@ -12,9 +12,9 @@ from oauthlib.oauth2 import WebApplicationClient
 from app.paytm import checksum
 import requests
 
-GOOGLE_CLIENT_ID = "289288864052-mqqaf81o3bc4ep74i590iv5qn2vedv70.apps.googleusercontent.com"
+GOOGLE_CLIENT_ID = "SECRET"
 
-GOOGLE_CLIENT_SECRET = '9Z8jzz_6q-sBaQxz6j_SnuNc'
+GOOGLE_CLIENT_SECRET = 'SECRET'
 GOOGLE_DISCOVERY_URL = "https://accounts.google.com/.well-known/openid-configuration"
 
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
@@ -61,8 +61,8 @@ def register():
         db.session.commit()
 
         url = "www.annapurna.tech/confirm_email/" + token
-        requests.post("https://api.mailgun.net/v3/support.annapurna.tech/messages",
-                      auth=("api", "221bffe3a7b94d381f7e3ff66c3e7332-7fba8a4e-e87281bf"),
+        requests.post("https://api.mailgun.net/v3/domain/messages",
+                      auth=("api", "SECRET"),
                       data={"from": "Annapurna <noreply@support.annapurna.tech>",
                             "to": [form.email.data],
                             "subject": "Registers For Annapurna",
@@ -92,7 +92,7 @@ def confirm_email(token):
     db.session.add(user())
     db.session.commit()
     requests.post("https://api.mailgun.net/v3/support.annapurna.tech/messages",
-                  auth=("api", "221bffe3a7b94d381f7e3ff66c3e7332-7fba8a4e-e87281bf"),
+                  auth=("api", "SECRET"),
                   data={"from": "Annapurna <noreply@support.annapurna.tech>",
                         "to": [email_email],
                         "subject": "Welcome to annapurna {}".format(user().username),
@@ -176,8 +176,8 @@ def callback():
         db.session.add(user)
         db.session.commit()
 
-        requests.post("https://api.mailgun.net/v3/support.annapurna.tech/messages",
-                      auth=("api", "221bffe3a7b94d381f7e3ff66c3e7332-7fba8a4e-e87281bf"),
+        requests.post("https://api.mailgun.net/v3/domain/messages",
+                      auth=("api", "SECRET"),
                       data={"from": "Annapurna <noreply@support.annapurna.tech>",
                             "to": [users_email],
                             "subject": "Welcome to annapurna {}".format(user.username),
@@ -240,8 +240,8 @@ def donate_food():
         eatables = form.food_quantity.data
         liquid = form.liquid.data
         address = form.address.data
-        requests.post("https://api.mailgun.net/v3/support.annapurna.tech/messages",
-                      auth=("api", "221bffe3a7b94d381f7e3ff66c3e7332-7fba8a4e-e87281bf"),
+        requests.post("https://api.mailgun.net/v3/domain/messages",
+                      auth=("api", "SECRET"),
                       data={"from": "Annapurna <noreply@support.annapurna.tech>",
                             "to": [email],
                             "subject": "Thank you for donation.{}".format(current_user.username),
@@ -274,7 +274,7 @@ def donate_fund():
 
         param_dict = {
 
-            'MID': 'GoMEMW82764175165100',
+            'MID': 'SECRET',
             'ORDER_ID': str(orderid),
             'TXN_AMOUNT': str(money),
             'CUST_ID': str(name),
@@ -284,7 +284,7 @@ def donate_fund():
             'CALLBACK_URL': 'http://127.0.0.1:5000/paytm/handlerequest/',
 
         }
-        param_dict['CHECKSUMHASH'] = checksum.generate_checksum(param_dict, '8Z58wwmtFAOhM1vm')
+        param_dict['CHECKSUMHASH'] = checksum.generate_checksum(param_dict, 'SECRET')
         return render_template('transfor.html', param=param_dict)
 
     return render_template('donate money.html', form=form)
@@ -305,8 +305,8 @@ def join_us():
         print(ngo.org_message)
         db.session.add(ngo)
         db.session.commit()
-        requests.post("https://api.mailgun.net/v3/support.annapurna.tech/messages",
-                      auth=("api", "221bffe3a7b94d381f7e3ff66c3e7332-7fba8a4e-e87281bf"),
+        requests.post("https://api.mailgun.net/v3/domain/messages",
+                      auth=("api", "SECRET"),
                       data={"from": "Annapurna <noreply@support.annapurna.tech>",
                             "to": [form.email.data],
                             "subject": "Welcome to annapurna {}".format(form.org_name.data),
