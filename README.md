@@ -20,6 +20,6 @@ Project is created with:
 * Flask
  * pycryptodomex
 
-##Contributions
+## Contributions
 
 [@a-turophile](https://www.github.com/a-turophile) has contributed by working on front-end and documenting the whole project
