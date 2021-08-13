@@ -1,6 +1,4 @@
 # Annapurna
-
-
 Annapurna project is a project that is non profit organisation seeking to erradicate the hunger crisis in India. It is a
 platform for NGOs and private business oweners to communicate for the efficient collection and distribution of surplus food that will 
 otherwise end up in landfills.
