@@ -49,7 +49,7 @@ oauthlib==2.1.0
 pampy==0.3.0
 pathspec==0.8.0
 Pillow==7.1.1
-pipenv==2018.11.26
+pipenv==2022.1.8
 pipreqs==0.4.10
 psycopg2==2.8.5
 pyasn1==0.4.8
